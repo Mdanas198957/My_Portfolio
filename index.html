@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammed Anas Abrar — Software Engineer</title>
+    <meta name="description" content="B.Tech CSE student building secure, scalable systems with Java, AI/ML, and modern web technologies.">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+        
+        :root {
+            --bg-primary: #0f1419;
+            --bg-secondary: #1a1f2e;
+            --bg-card: #1e2433;
+            --text-primary: #e6edf3;
+            --text-secondary: #9198a1;
+            --accent-primary: #3b82f6;
+            --accent-secondary: #8b5cf6;
+            --accent-tertiary: #06b6d4;
+            --border: rgba(255, 255, 255, 0.08);
+            --hover-glow: rgba(59, 130, 246, 0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Modern gradient background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.15), transparent),
+                radial-gradient(ellipse 60% 60% at 0% 50%, rgba(139, 92, 246, 0.1), transparent),
+                radial-gradient(ellipse 60% 60% at 100% 50%, rgba(6, 182, 212, 0.1), transparent);
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        /* Subtle mesh gradient overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+        
+        ::selection {
+            background: var(--accent-primary);
+            color: white;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        section {
+            padding: 5rem 0;
+            position: relative;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 20, 25, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 1rem 0;
+        }
+        
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Typography */
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+        }
+        
+        h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 600;
+            margin-bottom: 3rem;
+            color: var(--text-primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 2px;
+        }
+        
+        h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--text-primary);
+        }
+        
+        p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 0.95rem;
+            font-weight: 400;
+        }
+        
+        /* Card Base Style */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card:hover {
+            border-color: rgba(59, 130, 246, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Hero Section */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .hero-tag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 24px;
+            color: var(--accent-primary);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+        
+        .hero-description {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 3rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        
+        .btn-primary {
+            background: var(--accent-primary);
+            color: white;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background: #2563eb;
+            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--accent-primary);
+            background: rgba(59, 130, 246, 0.05);
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        
+        .about-text {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .highlight {
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+        
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .skill-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .skill-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .skill-card:hover {
+            border-color: var(--accent-primary);
+            background: rgba(59, 130, 246, 0.05);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        
+        .skill-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 1rem;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .skill-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+        
+        .skill-category {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            gap: 3rem;
+        }
+        
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            border-color: rgba(59, 130, 246, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .project-number {
+            display: inline-block;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-primary);
+            background: rgba(59, 130, 246, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+        
+        .project-problem {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 3px solid var(--accent-primary);
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tech-tag {
+            padding: 0.4rem 0.9rem;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--accent-tertiary);
+        }
+        
+        .project-details {
+            margin-bottom: 1rem;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .project-link {
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .project-link:hover {
+            color: var(--accent-secondary);
+            text-decoration: underline;
+        }
+        
+        /* Experience Grid */
+        .experience-grid {
+            display: grid;
+            gap: 2rem;
+        }
+        
+        .experience-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .experience-card:hover {
+            border-color: rgba(59, 130, 246, 0.3);
+            transform: translateY(-4px);
+        }
+        
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .experience-period {
+            font-size: 0.85rem;
+            color: var(--accent-primary);
+            font-weight: 500;
+        }
+        
+        .experience-role {
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+        
+        .experience-bullets {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .experience-bullets li {
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-secondary);
+        }
+        
+        .experience-bullets li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+            font-weight: bold;
+        }
+        
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+        
+        .tool-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+        
+        .tool-card:hover {
+            border-color: var(--accent-primary);
+            background: rgba(59, 130, 246, 0.05);
+            transform: translateY(-4px);
+        }
+        
+        /* Certificates Grid */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .cert-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+        }
+        
+        .cert-card:hover {
+            border-color: var(--accent-primary);
+            background: rgba(59, 130, 246, 0.05);
+            transform: translateY(-4px);
+        }
+        
+        .cert-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .cert-issuer {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        /* Resume Section */
+        .resume-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            transition: all 0.3s ease;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .resume-card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .resume-content {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex: 1;
+        }
+        
+        .resume-icon {
+            font-size: 4rem;
+            background: rgba(59, 130, 246, 0.1);
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            flex-shrink: 0;
+        }
+        
+        .resume-text h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .resume-text p {
+            margin-bottom: 1rem;
+        }
+        
+        .resume-highlights {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .resume-stat {
+            padding: 0.4rem 1rem;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-primary);
+        }
+        
+        .resume-download {
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+        
+        .resume-download svg {
+            transition: transform 0.3s ease;
+        }
+        
+        .resume-download:hover svg {
+            transform: translateY(2px);
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 6rem 0;
+        }
+        
+        .contact-card {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 4rem 3rem;
+        }
+        
+        .contact-subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 8px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1.5rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .experience-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .resume-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .resume-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            section {
+                padding: 3rem 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-logo">MA</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#resume">Resume</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-tag">B.Tech CSE • Final Year</div>
+                <h1>Mohammed Anas Abrar</h1>
+                <p class="hero-subtitle">Building systems that scale, secure, and solve real problems.</p>
+                <p class="hero-description">
+                    I'm a software engineer passionate about backend architecture, AI/ML pipelines, and building products that matter. Currently exploring distributed systems, cryptography, and data-driven decision-making.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        I'm a <span class="highlight">final-year Computer Science student</span> who believes engineering isn't just about writing code—it's about solving problems that matter. My focus is on backend systems, cryptography, and machine learning pipelines.
+                    </p>
+                    <p>
+                        From building <span class="highlight">secure cloud migration frameworks</span> with Bloom filters to architecting <span class="highlight">time-series forecasting systems</span> for EV infrastructure, I approach every project with a research-first mindset and an obsession for scalability.
+                    </p>
+                    <p>
+                        I leverage AI tools like Claude, Cursor, and OpenAI to accelerate prototyping and ship faster—but I never compromise on understanding the fundamentals. Whether it's optimizing algorithmic complexity or designing RESTful APIs, I focus on building systems that are both elegant and production-ready.
+                    </p>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-icon">JV</div>
+                        <div class="skill-name">Java</div>
+                        <div class="skill-category">Backend</div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">PY</div>
+                        <div class="skill-name">Python</div>
+                        <div class="skill-category">Data & ML</div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">SC</div>
+                        <div class="skill-name">Security</div>
+                        <div class="skill-category">Cryptography</div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">AI</div>
+                        <div class="skill-name">ML & AI</div>
+                        <div class="skill-category">Models</div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">WD</div>
+                        <div class="skill-name">Web Dev</div>
+                        <div class="skill-category">Full Stack</div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">CL</div>
+                        <div class="skill-name">Cloud</div>
+                        <div class="skill-category">Infrastructure</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2>Technical Stack</h2>
+            <div style="display: grid; gap: 3rem;">
+                <div>
+                    <h3 style="margin-bottom: 1.5rem; font-size: 1.1rem;">Languages & DataBase</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">C</span>
+                        <span class="tech-tag">SQL</span>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 1.5rem; font-size: 1.1rem;">AI/ML & Data Science</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                        <span class="tech-tag">scikit-learn</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">NumPy</span>
+                        <span class="tech-tag">Random Forest</span>
+                        <span class="tech-tag">ARIMA</span>
+
+                    </div>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 1.5rem; font-size: 1.1rem;">Frontend & Backend</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">TailWind CSS</span>
+                        <span class="tech-tag">Node.js</span>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 1.5rem; font-size: 1.1rem;">Tools & Technologies</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                        <span class="tech-tag">Streamlit</span>
+                        <span class="tech-tag">Git</span>
+                        <span class="tech-tag">GitHub</span>
+                        <span class="tech-tag">VS Code</span>
+                        <span class="tech-tag">Vercel</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-number">01</div>
+                    <div class="project-header">
+                        <h3>Secure Cloud Data Migration Framework</h3>
+                        <span style="font-size: 0.85rem; color: var(--accent-primary);">2025</span>
+                    </div>
+                    
+                    <div class="project-problem">
+                        How do you prove data integrity when migrating between untrusted cloud providers?
+                    </div>
+                    
+                    <div class="project-tech">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Bloom Filters</span>
+                        <span class="tech-tag">AES Encryption</span>
+                        <span class="tech-tag">SCP</span>
+                    </div>
+                    
+                    <p class="project-details">
+                        Built a research-led framework using probabilistic data structures to enable confidential data transfer between cloud providers. Implemented cryptographic hashing and AES encryption to ensure data integrity and permanent source deletion. The system achieves O(1) lookup complexity and scales linearly with dataset size—solving a trust problem that typically requires centralized verification.
+                    </p>
+                    
+                    <p class="project-details">
+                        <strong style="color: var(--accent-primary);">Impact:</strong> Demonstrates understanding of distributed systems, cryptography, and algorithmic optimization. This project separates academic knowledge from engineering execution.
+                    </p>
+                    
+                    <div class="project-links">
+                        <a href="https://github.com/Mdanas198957/MegaProject.git" target="_blank" class="project-link">View Code →</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-number">02</div>
+                    <div class="project-header">
+                        <h3>EV Charging Demand Prediction</h3>
+                        <span style="font-size: 0.85rem; color: var(--accent-primary);">2025</span>
+                    </div>
+                    
+                    <div class="project-problem">
+                        Can we predict multi-district EV charging demand 3 years out using limited historical data?
+                    </div>
+                    
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Streamlit</span>
+                        <span class="tech-tag">Random Forest</span>
+                        <span class="tech-tag">ARIMA</span>
+                        <span class="tech-tag">Prophet</span>
+                    </div>
+                    
+                    <p class="project-details">
+                        Architected end-to-end data pipelines for time-series forecasting across multiple districts. Chose Random Forest for interpretability and ARIMA for temporal patterns. Built an interactive dashboard that lets users compare 4 counties simultaneously—turning raw predictions into actionable infrastructure planning insights.
+                    </p>
+                    
+                    <p class="project-details">
+                        <strong style="color: var(--accent-primary);">Impact:</strong> Shows ML model selection reasoning, data pipeline design, and the ability to ship user-facing products. Completed as part of AICTE Top 40 national ranking.
+                    </p>
+                    
+                    <div class="project-links">
+                        <a href="https://apexplanetprojects-5hnjgqmcynjpxfa79lmp7p.streamlit.app/" target="_blank" class="project-link">Live Demo →</a>
+                        <a href="https://github.com/Mdanas198957/EV_Vehicle_Demand_Prediction.git" target="_blank" class="project-link">View Code →</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-number">03</div>
+                    <div class="project-header">
+                        <h3>Apex Web Tech</h3>
+                        <span style="font-size: 0.85rem; color: var(--accent-primary);">2025</span>
+                    </div>
+                    
+                    <div class="project-problem">
+                        From static pages to fully interactive e-commerce—how do you optimize for performance and modularity?
+                    </div>
+                    
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Responsive</span>
+                    </div>
+                    
+                    <p class="project-details">
+                        Series of progressively complex web applications culminating in a fully interactive shopping experience. Focused on component reusability, semantic HTML, and mobile-first design. Optimized rendering paths to achieve sub-2s load times across all modules.
+                    </p>
+                    
+                    <p class="project-details">
+                        <strong style="color: var(--accent-primary);">Impact:</strong> Proves frontend fundamentals and attention to performance—skills that transfer to any modern framework.
+                    </p>
+                    
+                    <div class="project-links">
+                        <a href="https://apexplanet-six.vercel.app/" target="_blank" class="project-link">Live Demo →</a>
+                        <a href="https://github.com/Mdanas198957/ApexPlanet_projects.git" target="_blank" class="project-link">View Code →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2>Experience</h2>
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <h3>ApexPlanet Software Pvt Ltd</h3>
+                        <span class="experience-period">May – July 2025</span>
+                    </div>
+                    <p class="experience-role">Software Engineering Intern</p>
+                    <ul class="experience-bullets">
+                        <li>Engineered modular UI components with high reusability, reducing frontend technical debt by 20%.</li>
+                        <li>Optimized client-side rendering logic to achieve sub-2s load times for core modules.</li>
+                        <li>Integrated secure RESTful endpoints for real-time synchronization in an Agile workflow.</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <h3>AICTE–Edunet (Skills4Future)</h3>
+                        <span class="experience-period">July – Oct 2025</span>
+                    </div>
+                    <p class="experience-role">AI/ML Intern</p>
+                    <ul class="experience-bullets">
+                        <li>Architected data pipelines for predictive modeling, handling time-series forecasting for EV infrastructure.</li>
+                        <li>Refined Random Forest and ARIMA models to optimize charging demand predictions with 85%+ accuracy.</li>
+                        <li>Ranked in the National Top 40 (Top 1%) out of thousands of applicants for engineering excellence.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- AI Tools Section -->
+    <section id="tools">
+        <div class="container">
+            <h2>AI Workflow</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 2.5rem; font-size: 1rem;">
+                Modern engineering leverages AI for prototyping, code review, and rapid iteration.
+            </p>
+            <div class="tools-grid">
+                <div class="tool-card">Cursor AI</div>
+                <div class="tool-card">Claude</div>
+                <div class="tool-card">OpenAI</div>
+                <div class="tool-card">ElevenLabs</div>
+                <div class="tool-card">Dora AI</div>
+                <div class="tool-card">Emergent</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Certificates Section -->
+    <section id="certificates">
+        <div class="container">
+            <h2>Certifications</h2>
+            <div class="cert-grid">
+                <a href="https://drive.google.com/file/d/1TNF_vmkPOdYvlZByfj1zDHZWK4f4TYEW/view?usp=drive_link" target="_blank" class="cert-card">
+                    <div class="cert-name">AI & Data Analytics</div>
+                    <div class="cert-issuer">Edunet & Skills4Future</div>
+                </a>
+                
+                <a href="https://drive.google.com/file/d/1pmWg9AVFswtPgm2ibxfpNSTG2xPsY1b6/view?usp=drive_link" target="_blank" class="cert-card">
+                    <div class="cert-name">Google Cloud AI</div>
+                    <div class="cert-issuer">Gemini & Vertex AI</div>
+                </a>
+                
+                <a href="https://drive.google.com/file/d/1tVOx372Z3FadKKCVGBuJLjzhl-hLpCXi/view?usp=drive_link" target="_blank" class="cert-card">
+                    <div class="cert-name">Cybersecurity Simulation</div>
+                    <div class="cert-issuer">TATA Group (Forage)</div>
+                </a>
+                
+                <a href="https://drive.google.com/file/d/1u8-ytdkYijTTPwrCogbB7eRvjf_lQarZ/view?usp=drive_link" target="_blank" class="cert-card">
+                    <div class="cert-name">ChatGPT & DeepSeek R1</div>
+                    <div class="cert-issuer">Udemy</div>
+                </a>
+                
+                <a href="https://drive.google.com/file/d/1wsf1jxX7F-rk4IaxDHCh331dS73vdQM0/view?usp=drive_link" target="_blank" class="cert-card">
+                    <div class="cert-name">Web Development</div>
+                    <div class="cert-issuer">ApexPlanet</div>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Resume Section -->
+    <section id="resume">
+        <div class="container">
+            <h2>Resume</h2>
+            <div class="resume-card">
+                <div class="resume-content">
+                    <div class="resume-icon">📄</div>
+                    <div class="resume-text">
+                        <h3>Download My Resume</h3>
+                        <p>Get a detailed overview of my experience, skills, and achievements in PDF format.</p>
+                        <div class="resume-highlights">
+                            <span class="resume-stat">9.41 CGPA</span>
+                            <span class="resume-stat">Top 40 AICTE</span>
+                            <span class="resume-stat">2 Internships</span>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="btn btn-primary resume-download" download>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download Resume
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-card">
+                <h2>Say Hello</h2>
+                <p class="contact-subtitle">
+                    Open for internships and full-time opportunities starting 2026.
+                </p>
+                <div class="contact-links">
+                    <a href="mailto:mohammedabraranas@gmail.com" class="social-link">
+                        📧 Email
+                    </a>
+                    <a href="https://github.com/Mdanas198957" target="_blank" class="social-link">
+                        💻 GitHub
+                    </a>
+                    <a href="https://linkedin.com/in/yourprofile" target="_blank" class="social-link">
+                        💼 LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2026 Mohammed Anas Abrar. Built with passion for clean code and elegant systems.</p>
+        </div>
+    </footer>
+</body>
+</html>
